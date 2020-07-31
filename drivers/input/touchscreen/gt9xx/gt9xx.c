@@ -423,13 +423,13 @@ static void gtp_touch_down(struct goodix_ts_data* ts,s32 id,s32 x,s32 y,s32 w)
 	if (gtp_change_x2y)
 		GTP_SWAP(x, y);
 
-	if (!bgt911 && !bgt970) {
+//	if (!bgt911 && !bgt970) {
 		if (gtp_x_reverse)
 			x = ts->abs_x_max - x;
 
 		if (gtp_y_reverse)
 			y = ts->abs_y_max - y;
-	}
+//	} //ifenergy
 
 #if GTP_ICS_SLOT_REPORT
     input_mt_slot(ts->input_dev, id);
@@ -2106,7 +2106,7 @@ static s8 gtp_request_input_dev(struct i2c_client *client,
     
     ts->tp.tp_resume = goodix_ts_early_resume;
     ts->tp.tp_suspend = goodix_ts_early_suspend;
-    tp_register_fb(&ts->tp);
+    //tp_register_fb(&ts->tp); //TODO fly
 
 #if GTP_WITH_PEN
     gtp_pen_init(ts);
@@ -2639,7 +2639,7 @@ static int goodix_ts_probe(struct i2c_client *client, const struct i2c_device_id
 	} else if (val == 911) {
 		m89or101 = FALSE;
 		bgt911 = TRUE;
-		gtp_change_x2y = TRUE;
+		gtp_change_x2y = FALSE;
 		gtp_x_reverse = FALSE;
 		gtp_y_reverse = TRUE;
 	} else if (val == 970) {
