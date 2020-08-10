@@ -395,8 +395,8 @@
 	compatible ="simple-panel";
 	backlight = <&backlight>;
 	bus-format = <MEDIA_BUS_FMT_RGB888_1X24>;// 18位总线的LVDS（1x18), 硬件24位(1x24)
-	//enable-gpios = <&gpio8 6 GPIO_ACTIVE_HIGH>;//8 6 // 6 6 ifenergy
-	enable-gpios = <&gpio6 6 GPIO_ACTIVE_HIGH>;//8 6 // 6 6 ifenergy
+	enable-gpios = <&gpio8 6 GPIO_ACTIVE_HIGH>;//8 6 // 6 6 ifenergy
+	//enable-gpios = <&gpio6 6 GPIO_ACTIVE_HIGH>;//8 6 // 6 6 ifenergy
 	enable-delay-ms = <10>;
 	power-supply = <&vcc_lcd>;
 	rockchip,data-mapping = "vesa";//jeida , vesa
@@ -583,11 +583,11 @@
 		compatible = "goodix,gt9xx";
 		reg = <0x14>;
 
-//		touch-gpio = <&gpio0 7 IRQ_TYPE_EDGE_RISING>;//IRQ_TYPE_LEVEL_LOW>;//gpio7 15//0 7
-//		reset-gpio = <&gpio0 23 GPIO_ACTIVE_LOW>;//gpio7 5//0 23
+		touch-gpio = <&gpio0 7 IRQ_TYPE_EDGE_RISING>;//IRQ_TYPE_LEVEL_LOW>;//gpio7 15//0 7
+		reset-gpio = <&gpio0 23 GPIO_ACTIVE_LOW>;//gpio7 5//0 23
 
-		touch-gpio = <&gpio7 15 IRQ_TYPE_EDGE_RISING>;//IRQ_TYPE_LEVEL_LOW>;//gpio7 15//0 7
-		reset-gpio = <&gpio7 5 GPIO_ACTIVE_LOW>;//gpio7 5//0 23
+//		touch-gpio = <&gpio7 15 IRQ_TYPE_EDGE_RISING>;//IRQ_TYPE_LEVEL_LOW>;//gpio7 15//0 7
+//		reset-gpio = <&gpio7 5 GPIO_ACTIVE_LOW>;//gpio7 5//0 23
 		max-x = <1024>;
 		max-y = <600>;
 		tp-size = <911>;

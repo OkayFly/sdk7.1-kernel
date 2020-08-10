@@ -99,7 +99,7 @@
 		upthreshold = <55>;
 		downdifferential = <10>;
 		operating-points-v2 = <&dmc_opp_table>;
-		vop-dclk-mode = <0>;
+		vop-dclk-mode = <1>;//old 0
 		min-cpu-freq = <600000>;
 		rockchip,ddr_timing = <&ddr_timing>;
 		system-status-freq = <
@@ -207,10 +207,11 @@
 				status = "disabled";
 				logo,uboot = "logo.bmp";
 				logo,kernel = "logo_kernel.bmp";
-				logo,mode = "center";
-				charge_logo,mode = "center";
+				logo,mode = "fullscreen";
+				charge_logo,mode = "fullscreen";
 				connect = <&vopl_out_lvds>;
 			};
+
 
 
 			route_hdmi: route-hdmi {

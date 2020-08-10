@@ -385,6 +385,7 @@
 	status = "okay";
 };
 
+
 &route_lvds {
 	status = "okay";
 };
@@ -688,7 +689,7 @@
 };
 
 &rockchip_suspend {
-	status = "disabled";//TODO
+	status = "ok";//TODO//old is disabled
 };
 
 &usb_otg {

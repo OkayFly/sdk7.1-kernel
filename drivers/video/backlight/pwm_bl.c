@@ -23,6 +23,7 @@
 #include <linux/pwm_backlight.h>
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
+#include <linux/delay.h>
 
 struct pwm_bl_data {
 	struct pwm_device	*pwm;
@@ -206,7 +207,9 @@ static int pwm_backlight_probe(struct platform_device *pdev)
 	int initial_blank = FB_BLANK_UNBLANK;
 	struct pwm_args pargs;
 	int ret;
-
+	
+	printk("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%s@@@@@@@@@@@@",__func__);
+	//mdelay(5000);
 	if (!data) {
 		ret = pwm_backlight_parse_dt(&pdev->dev, &defdata);
 		if (ret < 0) {
@@ -346,7 +349,7 @@ static int pwm_backlight_probe(struct platform_device *pdev)
 
 	bl->props.brightness = data->dft_brightness;
 	bl->props.power = initial_blank;
-	backlight_update_status(bl);
+//	backlight_update_status(bl);
 
 	platform_set_drvdata(pdev, bl);
 	return 0;

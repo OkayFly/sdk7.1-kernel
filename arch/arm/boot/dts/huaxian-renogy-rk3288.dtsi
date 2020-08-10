@@ -237,7 +237,6 @@
 			opp-microvolt-L3 = <1050000 1050000 1350000>;
 			clock-latency-ns = <40000>;
 		};
-/*
 		opp-1416000000 {
 			opp-hz = /bits/ 64 <1416000000>;
 			opp-microvolt = <1300000 1300000 1350000>;
@@ -265,7 +264,6 @@
 			opp-microvolt-L3 = <1250000 1250000 1350000>;
 			clock-latency-ns = <40000>;
 		};
-*/
 	};
 
 	amba {
@@ -1737,12 +1735,12 @@
 			opp-hz = /bits/ 64 <400000000>;
 			opp-microvolt = <1100000>;
 		};
-/*
+
 		opp-500000000 {
 			opp-hz = /bits/ 64 <500000000>;
 			opp-microvolt = <1200000>;
 		};
-*/
+
 	};
 
 	noc: syscon@ffac0000 {
