@@ -380,7 +380,12 @@
 	status = "okay";
 };
 
+
 &route_lvds {
+	status = "okay";
+};
+
+&route_hdmi {
 	status = "okay";
 };
 
@@ -592,6 +597,7 @@
 		max-y = <600>;
 		tp-size = <911>;
 		//tp-supply = <&pmic_vcc_tp_33>;
+		hx-flag = <1>;
 		status = "okay";
 	};
 

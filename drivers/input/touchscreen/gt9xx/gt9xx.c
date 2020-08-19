@@ -64,6 +64,7 @@ static u8 gtp_change_x2y = TRUE;
 static u8 gtp_x_reverse = FALSE;
 static u8 gtp_y_reverse = TRUE;
 
+static u8 hx_flag;
 static const char *goodix_ts_name = "goodix-ts";
 static struct workqueue_struct *goodix_wq;
 struct i2c_client * i2c_connect_client = NULL; 
@@ -422,6 +423,21 @@ static void gtp_touch_down(struct goodix_ts_data* ts,s32 id,s32 x,s32 y,s32 w)
 {
 	if (gtp_change_x2y)
 		GTP_SWAP(x, y);
+	if(hx_flag)
+	{
+
+	if (!bgt911 && !bgt970) {
+		if (gtp_x_reverse)
+			x = ts->abs_x_max - x;
+
+		if (gtp_y_reverse)
+			y = ts->abs_y_max - y;
+	} 
+
+
+	}
+	else
+	{
 
 //	if (!bgt911 && !bgt970) {
 		if (gtp_x_reverse)
@@ -430,7 +446,7 @@ static void gtp_touch_down(struct goodix_ts_data* ts,s32 id,s32 x,s32 y,s32 w)
 		if (gtp_y_reverse)
 			y = ts->abs_y_max - y;
 //	} //ifenergy
-
+	}
 #if GTP_ICS_SLOT_REPORT
     input_mt_slot(ts->input_dev, id);
     input_report_abs(ts->input_dev, ABS_MT_TRACKING_ID, id);
@@ -2685,6 +2701,17 @@ static int goodix_ts_probe(struct i2c_client *client, const struct i2c_device_id
     	return -EINVAL;
     }
     //ts->abs_y_max = val;
+    //
+	if (of_property_read_u32(np, "hx-flag", &val)) {
+    		dev_err(&client->dev, "no hx-flag defined\n");
+    	//	return -EINVAL;
+		hx_flag = 0;
+   	 }
+	else
+	{
+		dev_err(&client->dev, "hx-flag defined");	
+		hx_flag = 1;
+	}
     if (of_property_read_u32(np, "configfile-num", &val)) {
 	    ts->cfg_file_num = 0;
     } else {
