@@ -1,3 +1,6 @@
 make ARCH=arm rockchip_defconfig
 make ARCH=arm rk3288-firefly-reload.img
 
+
+end
+
